@@ -15,8 +15,14 @@ public class StructBinaryDataReader {
         while(buff[nameLength] != '\0') {
             nameLength++;
         }
+
+        byte salBuff[] = new byte[8];
+        for(int i = 107; i >= 100; i--) {
+            salBuff[107 - i] = buff[i];
+        }
+
         String name = new String(buff, 0, nameLength);
-        Double salary = ByteBuffer.wrap(buff, 100, 8).order(ByteOrder.LITTLE_ENDIAN).getDouble();
+        Double salary = ByteBuffer.wrap(salBuff, 0, 8).getDouble();
         Integer age = ByteBuffer.wrap(buff, 108, 4).order(ByteOrder.LITTLE_ENDIAN).getInt();
 
         System.out.println(name);
