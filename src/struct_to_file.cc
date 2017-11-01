@@ -25,7 +25,7 @@ int main()
     char buff[112];
     memcpy(buff, emp->name, 100);
     memcpy((buff + 100), &(emp->salary), 8);
-    memcpy((buff + sizeof(double)), &(emp->age), 4);
+    memcpy((buff + 108), &(emp->age), 4);
 
     int del_sts = remove("struct_data.dat");
     if(del_sts != 0)
@@ -60,7 +60,7 @@ int main()
     employee *new_emp = (employee *) malloc(sizeof(employee));
     memcpy(new_emp->name, new_buff, 100);
     memcpy(&(new_emp->salary), (new_buff + 100), 8);
-    memcpy(&(new_emp->age), (new_buff + sizeof(double)), 4);
+    memcpy(&(new_emp->age), (new_buff + 108), 4);
     printf("%s, %lf, %d\n", new_emp->name, new_emp->salary, new_emp->age);
 
     free(emp);
